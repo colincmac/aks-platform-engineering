@@ -1,0 +1,25 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: aks-store-demo
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/Azure-Samples/aks-store-demo.git
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: aks-store-demo
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./kustomize/overlays/dev
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: aks-store-demo
+  targetNamespace: argocd

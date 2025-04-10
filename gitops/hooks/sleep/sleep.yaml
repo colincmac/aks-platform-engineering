@@ -5,8 +5,8 @@ metadata:
   generateName: sleep-
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    fluxcd.io/hook: PreSync
+    fluxcd.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
